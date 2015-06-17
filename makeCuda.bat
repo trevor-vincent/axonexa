@@ -1,0 +1,3 @@
+cudaCompile Cos_OneCyl
+cudaCompile gammadistCos
+cudaCompile gammadistRect

@@ -1,0 +1,1 @@
+nvcc -o sinCyl.exe sinCyl.cu -m 32 -arch sm_20 -I ./acquisition -I ./functors -I ./kernels -I ./params -I ./primitives -I ./substrate -I ./util -I ./blochdiff
