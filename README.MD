@@ -1,17 +1,15 @@
 ********************************************************************
 
- Diffusion Low-Field MRI Monte Carlo (DMMC) Simulations on Multi-GPU Systems
-
-	Author: Trevor Vincent (tvincent@cita.utoronto.ca)
-       Last Updated: September 17, 2013
-
-********************************************************************
+	Diffusion Low-Field MRI Monte Carlo (DMMC)
+	 Simulations on Multi-GPU Systems
+   Author: Trevor Vincent (tvincent@cita.utoronto.ca)
+          Last Updated: September 17, 2013
 
 ********************************************************************
 
-                    Section 1: Intro
 
-********************************************************************
+Intro
+-----
 
 The general ideas behind the DMMC simulations are explained in my Honour's Thesis (email me for it).
 Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). 
@@ -33,16 +31,13 @@ Finally, the UCL Camino group offers a monte carlo simulation code in their Cami
 does not support multicompartment geometries with different diffusion coefficients when the permeability is nonzero
 (see camino mailing list archives). They also use the high-field approximation always. These may not be of concern to a lot of people, but it is one extra feature that my code supports.
 
-**********************************************************************
-
-   Compiling and Using GPU version
-
-**********************************************************************
-
-You will need an NVIDIA card that is FERMI(~2010) generation or newer.
-
 Compiling
 ---------
+
+Terminology: the frontend code is the problem you want to solve. The backend code is the general
+algorithms I have coded to solve general problems.
+
+You will need an NVIDIA card that is FERMI(~2010) generation or newer.
 
 1. Your frontend code file will typically look like "filename.cu" and will be located in the directory
 you are compiling in (the main code directory).
@@ -53,6 +48,9 @@ type "cudaCompile" to see an example of its usage.
 directory, type this into a console:
 "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\vcvars32.bat\" && "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\" --machine 32 -arch sm_20 -I "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\" -I .\acquisition -I .\functors -I .\kernels -I .\params -I .\primitives -I .\substrate -I .\util -I .\blochdiff -o filename.exe filename.cu
 
+
+Examples
+--------
 
 **********************************************************************
 
