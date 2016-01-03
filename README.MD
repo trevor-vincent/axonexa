@@ -1,26 +1,26 @@
 ********************************************************************
-**
-** Diffusion Low-Field MRI Monte Carlo (DMMC) Simulations on Multi-GPU Systems
-**
-**		 Authors: Trevor Vincent (tvincent@cita.utoronto.ca)
-**       Last Updated: September 17, 2013
-**
+
+ Diffusion Low-Field MRI Monte Carlo (DMMC) Simulations on Multi-GPU Systems
+
+	Author: Trevor Vincent (tvincent@cita.utoronto.ca)
+       Last Updated: September 17, 2013
+
 ********************************************************************
 
 ********************************************************************
-**
-**                    Section 1: Intro
-**
+
+                    Section 1: Intro
+
 ********************************************************************
 
-The general ideas behind the DMMC simulations are explained in my (- T.V) Honour's Thesis,
-so please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). 
+The general ideas behind the DMMC simulations are explained in my Honour's Thesis (email me for it).
+Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). 
 This Multi-GPU code supports general regions with multiple compartments
 having different D's, T2's, T1's and P's and any general magnetic field sequences (i.e. containing oscillating RF fields,
 concomitant terms etc). Since speed is very important in the GPU version, the code is split into a general version which
 makes no assumptions and solves the Bloch equations and a version which makes the high-field approximation and just 
 updates the phase. My DMMC code has a frontend which is decently easy to use and allows for very complicated geometries and sequences
-to be implemented in very few lines of code (the difference between a FCC lattice of cylinders and a single sphere is just 13 lines of
+to be implemented in very few lines of code (the difference between a FCC lattice of spheres and a single sphere is just 13 lines of
 frontend code!).
 
 In this readme I will go over how to compile and run theGPU version. Then I will give examples of frontend codes
@@ -34,9 +34,9 @@ does not support multicompartment geometries with different diffusion coefficien
 (see camino mailing list archives). They also use the high-field approximation always. These may not be of concern to a lot of people, but it is one extra feature that my code supports.
 
 **********************************************************************
-**
-**   Compiling and Using GPU version
-**
+
+   Compiling and Using GPU version
+
 **********************************************************************
 
 You will need an NVIDIA card that is FERMI(~2010) generation or newer.
@@ -55,9 +55,9 @@ directory, type this into a console:
 
 
 **********************************************************************
-**
-**   Frontend Example 1 (GPU): Simulating Diffusion in a Single Object 
-**
+
+   Frontend Example 1 (GPU): Simulating Diffusion in a Single Object 
+
 **********************************************************************
 
 Geometry: Sphere
@@ -86,20 +86,20 @@ The easiest would be probably to make a sphere/cylinder basis with zero radius (
 the particles in the sphere!). But you can also make your own empty basis class.
 
 ***********************************************************************************************************************
-**
-**   Frontend Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
-**   (Gamma distribution of cylinders) 
-**
+
+   Frontend Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
+   (Gamma distribution of cylinders) 
+
 ***********************************************************************************************************************
 
 See gammadistCos.cu. Gamma distribution parameters are from Matt Halls' paper http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=04797853
 This code frontend has been heavily tested.
 
 ***********************************************************************************************************
-**
-**   Frontend Example 3 (GPU): Complicated sequence with concomitant gradient terms 
-**   (UCN low-field gas experiment in a Big Cylinder) 
-**
+
+   Frontend Example 3 (GPU): Complicated sequence with concomitant gradient terms 
+   (UCN low-field gas experiment in a Big Cylinder) 
+
 ***********************************************************************************************************
 
 See:
