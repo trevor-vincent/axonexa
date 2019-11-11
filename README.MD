@@ -2,8 +2,6 @@
 
 	Diffusion Low-Field MRI Monte Carlo (DMMC)
 	 Simulations on Multi-GPU Systems
-   Author: Trevor Vincent (tvincent@cita.utoronto.ca)
-          Last Updated: September 17, 2013
 
 ********************************************************************
 
