@@ -9,7 +9,7 @@
 Intro
 -----
 
-The general ideas behind the DMMC simulations are explained in my Honour's Thesis (see the file HonoursThesis_TrevorVincent_13-05-2013.pdf).
+The general ideas behind the DMMC simulations are explained in my **Honour's Thesis (see the file HonoursThesis_TrevorVincent_13-05-2013.pdf)**.
 Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). 
 This Multi-GPU code supports general regions with multiple compartments
 having different D's, T2's, T1's and P's and any general magnetic field sequences (i.e. containing oscillating RF fields,
