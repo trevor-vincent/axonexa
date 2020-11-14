@@ -6,7 +6,7 @@
 ********************************************************************
 
 
-Intro
+**Intro**
 -----
 
 The general ideas behind the DMMC simulations are explained in my **Honour's Thesis (see the file HonoursThesis_TrevorVincent_13-05-2013.pdf)**.
@@ -29,7 +29,7 @@ Finally, the UCL Camino group offers a monte carlo simulation code in their Cami
 does not support multicompartment geometries with different diffusion coefficients when the permeability is nonzero
 (see camino mailing list archives). They also use the high-field approximation always. These may not be of concern to a lot of people, but it is one extra feature that my code supports.
 
-Compiling
+**Compiling**
 ---------
 
 Terminology: the frontend code is the problem you want to solve. The backend code is the general
@@ -47,12 +47,12 @@ directory, type this into a console:
 "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\vcvars32.bat\" && "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\" --machine 32 -arch sm_20 -I "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\" -I .\acquisition -I .\functors -I .\kernels -I .\params -I .\primitives -I .\substrate -I .\util -I .\blochdiff -o filename.exe filename.cu
 
 
-Examples
+**Examples**
 --------
 
 **********************************************************************
 
-   Frontend Example 1 (GPU): Simulating Diffusion in a Single Object 
+   **Frontend Example 1 (GPU): Simulating Diffusion in a Single Object**
 
 **********************************************************************
 
@@ -83,8 +83,8 @@ the particles in the sphere!). But you can also make your own empty basis class.
 
 ***********************************************************************************************************************
 
-   Frontend Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
-   (Gamma distribution of cylinders) 
+   **Frontend Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
+   (Gamma distribution of cylinders)**
 
 ***********************************************************************************************************************
 
@@ -93,8 +93,8 @@ This code frontend has been heavily tested.
 
 ***********************************************************************************************************
 
-   Frontend Example 3 (GPU): Complicated sequence with concomitant gradient terms 
-   (UCN low-field gas experiment in a Big Cylinder) 
+   **Frontend Example 3 (GPU): Complicated sequence with concomitant gradient terms 
+   (UCN low-field gas experiment in a Big Cylinder)**
 
 ***********************************************************************************************************
 
