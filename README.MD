@@ -19,15 +19,15 @@ updates the phase. My DMMC code has a frontend which is decently easy to use and
 to be implemented in very few lines of code (the difference between a FCC lattice of spheres and a single sphere is just 13 lines of
 frontend code!).
 
-In this readme I will go over how to compile and run theGPU version. Then I will give examples of frontend codes
-(which are in the main code folder). For editing the backend, such as adding
-new geometries, sequences, or dynamics (such as flow), either check in my Honour's Thesis or email me. The design of the code
-can handle any geometry, any sequence and any type of particle movement (not just diffusion) in any dimension, but not everything 
+In this readme I will go over how to compile and run the GPU version. Then I will give examples of frontend codes
+(which are in the main code folder). For explanations of how to edit the backend, such as adding
+new geometries, sequences, or dynamics (such as flow), either check my Honour's Thesis or email me. The design of the code
+is flexible enough to handle any geometry, any sequence and any type of particle movement (not just diffusion) in any dimension, but not everything 
 is implemented currently.
 
 Finally, the UCL Camino group offers a monte carlo simulation code in their Camino library. However, this code
 does not support multicompartment geometries with different diffusion coefficients when the permeability is nonzero
-(see camino mailing list archives). They also use the high-field approximation always. These may not be of concern to a lot of people, but it is one extra feature that my code supports.
+(as of 2013, see the camino mailing list archives). They also use the high-field approximation always. These may not be of concern to a lot of people, but it is one extra feature that my code supports.
 
 **Compiling**
 ---------
