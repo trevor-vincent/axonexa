@@ -52,7 +52,7 @@ directory, type this into a console:
 
 **********************************************************************
 
-   **Frontend Example 1 (GPU): Simulating Diffusion in a Single Object**
+   **Example 1 (GPU): Simulating Diffusion in a Single Object**
 
 **********************************************************************
 
@@ -83,7 +83,7 @@ the particles in the sphere!). But you can also make your own empty basis class.
 
 ***********************************************************************************************************************
 
-   **Frontend Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
+   **Example 2 (GPU): Simulating Diffusion in a Multicompartment region with lattice periodicity and a cosOGSE
    (Gamma distribution of cylinders)**
 
 ***********************************************************************************************************************
@@ -93,7 +93,7 @@ This code frontend has been heavily tested.
 
 ***********************************************************************************************************
 
-   **Frontend Example 3 (GPU): Complicated sequence with concomitant gradient terms 
+   **Example 3 (GPU): Complicated sequence with concomitant gradient terms 
    (UCN low-field gas experiment in a Big Cylinder)**
 
 ***********************************************************************************************************
