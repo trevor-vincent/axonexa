@@ -9,7 +9,7 @@
 **Intro**
 -----
 
-The general ideas behind the DMMC simulations are explained in my **Honour's Thesis (see the file HonoursThesis_TrevorVincent_13-05-2013.pdf)**.
+The general ideas behind the DMMC simulations are explained in my **Honour's Thesis (see the file [HonoursThesis_TrevorVincent_13-05-2013.pdf](https://github.com/trevor-vincent/lowfield_diffusion_mri_gpu/blob/f45913fa46b26cdbd1bd988c754a77bad53a28e7/HonoursThesis_TrevorVincent_13-05-2013.pdf))**.
 This work has been used in 2-3 scientific publications and has been expanded upon by Michael Honke here: https://github.com/mlhonke/mri_sim
 Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). 
 This Multi-GPU code supports general regions with multiple compartments
