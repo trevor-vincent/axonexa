@@ -10,7 +10,7 @@
 -----
 
 The general ideas behind the DMMC simulations are explained in my **Honour's Thesis (see the file [HonoursThesis_TrevorVincent_13-05-2013.pdf](https://github.com/trevor-vincent/lowfield_diffusion_mri_gpu/blob/f5ca9b2eaa411603d56b2ddc2353ac5d11407666/HonoursThesis_TrevorVincent_13-05-2013.pdf))**.
-Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). This work has been used in 2-3 scientific publications and has been expanded upon by Michael Honke here: https://github.com/mlhonke/mri_sim
+Please look there for explanations of the algorithms and deeper analysis of the underlying backend (especially look at the appendix). This work has been used in 2-3 scientific publications, a phd thesis, and has been expanded upon by Michael Honke here: https://github.com/mlhonke/mri_sim .
 This Multi-GPU code supports general regions with multiple compartments
 having different D's, T2's, T1's and P's and any general magnetic field sequences (i.e. containing oscillating RF fields,
 concomitant terms etc). Since speed is very important in the GPU version, the code is split into a general version which
