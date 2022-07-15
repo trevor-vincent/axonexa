@@ -1,1 +1,0 @@
-nvcc -o main.exe main.cu -m 32 -arch sm_20 -I ./acquisition -I ./functors -I ./kernels -I ./params -I ./primitives -I ./substrate -I ./util -I ./blochdiff -Xptxas -v,-abi=no,-dlcm=cg
