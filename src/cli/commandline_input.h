@@ -41,12 +41,12 @@ typedef struct {
     double csz; // z dimension cell size for szafer box cells (NOT BEING USED BY
                 // ANYTHING). But I would still recommend setting csz = ls, just
                 // in case it is being used
-    double p;              // permeability
-    double dt;             // timestep
-    double ls;             // lattice size
-    double g;              // initial gradient strength
-    double hex_sidelength; // hexagon sidelength d (see lattice.h for more info
-                           // about this)
+    double p;   // permeability
+    double dt;  // timestep
+    double ls;  // lattice size
+    double g;   // initial gradient strength
+    double hex_sidelength;  // hexagon sidelength d (see lattice.h for more info
+                            // about this)
     bool printparticleinfo; // prints particle info, NOT SUPPORTED BY THE CODE
                             // ANYMORE
     bool printparticleposition; // prints the trajectories of the particles to
@@ -57,14 +57,14 @@ typedef struct {
     bool gaussian;    // prints gaussian data to file
     bool use_T2;      // flag which determines if T2 is used or not
     int graddir;      // direction of the gradient (0 = x-axis, 1 = y-axis, 2=
-                 // z-axis)
+                      // z-axis)
     int num_of_trial; // number of different b values used for linear regression
                       // calculation
     int num_of_repeat; // number of times to repeat the simulation (back to back
                        // simulations with the same initial parameters)
-    FILE *fh;    // main file handle for printing ADCx and ADCz
-    FILE *fh_g;  // file handle for gaussian
-    FILE *fh_pp; // defunct
+    FILE *fh;          // main file handle for printing ADCx and ADCz
+    FILE *fh_g;        // file handle for gaussian
+    FILE *fh_pp;       // defunct
     /* file handles for incorrect linear regression investiagetion */
     FILE *fh_incorrectlinreg_ADCx;
     FILE *fh_incorrectlinreg_ADCy;

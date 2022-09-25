@@ -293,7 +293,7 @@ real computePhaseSx(int n, real *d_idata, char creal) {
         needReadBack = 0;
     }
 
-    cudaThreadSynchronize();
+    cudaDeviceSynchronize();
 
     if (needReadBack == 1) {
         // copy final sum from device to host

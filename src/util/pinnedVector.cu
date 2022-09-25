@@ -1,18 +1,17 @@
-/*
-  #include "cudaVector.cuh"
-  #include "pinnedVector.cuh"
-  #include <cmath>
-  #include <cuda.h>
-  #include <curand_kernel.h>
-  #include <iomanip>
-  #include <iostream>
-  #include <thrust/device_ptr.h>
-  #include <thrust/device_vector.h>
-  #include <thrust/functional.h>
-  #include <thrust/host_vector.h>
-  #include <thrust/transform_reduce.h>
-  #include <vector>
-*/
+
+#include "cudaVector.cuh"
+#include "pinnedVector.cuh"
+  // #include <cmath>
+  // #include <cuda.h>
+  // #include <curand_kernel.h>
+  // #include <iomanip>
+  // #include <iostream>
+  // #include <thrust/device_ptr.h>
+  // #include <thrust/device_vector.h>
+  // #include <thrust/functional.h>
+  // #include <thrust/host_vector.h>
+  // #include <thrust/transform_reduce.h>
+  // #include <vector>
 
 template <class T> pinnedVector<T>::pinnedVector(int size) {
     _size = size;

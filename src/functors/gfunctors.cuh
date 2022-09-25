@@ -1,3 +1,5 @@
+#pragma once
+
 class RectGrad {
 
   private:
@@ -77,7 +79,7 @@ class CosGFunc {
     __device__ __host__ CosGFunc() {}
     __device__ __host__ CosGFunc(real _G, real _gradientDuration,
                                  real _gradientSpacing, int _numOfPeriods,
-                                 Vector3 &_gHat) {
+                                 const Vector3 &_gHat) {
 
         gradientDuration = _gradientDuration;
         gradientSpacing = _gradientSpacing;

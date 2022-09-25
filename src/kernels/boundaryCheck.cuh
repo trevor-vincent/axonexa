@@ -1,3 +1,5 @@
+#include "lattice.cuh"
+
 template <class Basis>
 __device__ void boundaryNormal(Vector3 &ri, Vector3 &r, const real currentSpeed,
                                const Basis *basis, const real timestep) {

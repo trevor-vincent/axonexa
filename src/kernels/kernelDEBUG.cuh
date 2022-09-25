@@ -1,3 +1,6 @@
+#include "simuParams.cuh"
+#include "substrate.cuh"
+
 template <class FieldType, class Basis>
 __global__ void updateWalkersMagDEBUG(
 

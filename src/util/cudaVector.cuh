@@ -1,4 +1,3 @@
-
 #ifndef CUDAVECTOR_H_
 #define CUDAVECTOR_H_
 

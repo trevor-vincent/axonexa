@@ -14,8 +14,8 @@ etc
 */
 
 /* header files for the Numerical Recipes SVD fit */
-#include "svd.h"
 #include "fitsvd.h"
+#include "svd.h"
 //#include "mrisequence.h"
 
 /***************************************************************************************
@@ -215,8 +215,8 @@ double multi_lin(double lnsignal[], double b[][6], int num, double D[]) {
 
     MatDoub xx(num, 6); // n x 6 matrix where n is the number of b vectors and 6
                         // is the b components
-    VecDoub yy(num);  // nx1 vector for the y values
-    VecDoub sig(num); // error
+    VecDoub yy(num);    // nx1 vector for the y values
+    VecDoub sig(num);   // error
 
     for (int i = 0; i < num; i++) {
 

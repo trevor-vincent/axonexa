@@ -1,3 +1,5 @@
+#pragma once
+#include "vector3.cuh"
 
 template <class GradientType, class Basis>
 __global__ void updateWalkersPhase(const SimuParamsPhase *par,
@@ -37,9 +39,9 @@ __global__ void updateWalkersPhase(const SimuParamsPhase *par,
         phi = 2.0 * PI * curand_uniform(&localState);
         theta = acos(2.0 * curand_uniform(&localState) - 1);
 
-        r += Vector3(speed * par->timestep * sin(theta) * cos(phi),
-                     speed * par->timestep * sin(theta) * sin(phi),
-                     speed * par->timestep * cos(theta));
+        r += Vector3(stepLength * sin(theta) * cos(phi),
+                     stepLength * sin(theta) * sin(phi),
+                     stepLength * cos(theta));
 #endif
 
 #if defined SPECULAR_REFLECTION

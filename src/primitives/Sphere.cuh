@@ -1,3 +1,6 @@
+#include "misc.cuh"
+#include "compare.cuh"
+
 class Sphere {
 
   private:

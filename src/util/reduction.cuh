@@ -1,4 +1,6 @@
-__device__ double atomicAdd(double *address, double val) {
+#pragma once
+
+__device__ double atomicAddInHouse(double *address, double val) {
     unsigned long long int *address_as_ull = (unsigned long long int *)address;
     unsigned long long int old = *address_as_ull, assumed;
     do {
@@ -68,7 +70,7 @@ __global__ void _functionReduceAtom(T *sum, T *g_idata, const unsigned int n) {
     // write result for each block to global mem
 
     if (threadIdx.x == 0)
-        atomicAdd(sum, smem[0]);
+        atomicAddInHouse(sum, smem[0]);
 }
 
 template <class T, class Transform>
@@ -128,7 +130,7 @@ __global__ void _functionTransformAndReduceAtom(T *sum, T *g_idata,
     // write result for each block to global mem
 
     if (threadIdx.x == 0)
-        atomicAdd(sum, smem[0]);
+        atomicAddInHouse(sum, smem[0]);
 }
 
 template <class T, class Transform>
@@ -189,5 +191,5 @@ __global__ void _functionTransformAndSumTwoVectorsAtom(T *sum, T *g_idata1,
     // write result for each block to global mem
 
     if (threadIdx.x == 0)
-        atomicAdd(sum, smem[0]);
+        atomicAddInHouse(sum, smem[0]);
 }

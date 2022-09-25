@@ -1,3 +1,6 @@
+#pragma once
+#include <iostream>
+
 class Vector3 {
 
   public:
@@ -179,7 +182,7 @@ class Vector3 {
                        x * vector.y - y * vector.x);
     }
 
-    __host__ friend std::ostream &operator<<(std::ostream &out, Vector3 &v) {
+    __host__ friend std::ostream &operator<<(std::ostream &out, const Vector3 &v) {
 
         out << v.x << " " << v.y << " " << v.z;
         return out;

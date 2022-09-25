@@ -1,4 +1,5 @@
 #include "reduction.cuh"
+#include "cudaVector.cuh"
 
 // log all errors into logger
 

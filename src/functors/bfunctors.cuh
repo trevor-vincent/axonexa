@@ -1,3 +1,6 @@
+#pragma once
+#include "vector3.cuh"
+
 // Quadropolar Saddle Coil
 class QSC_GRE {
 

@@ -1,3 +1,5 @@
+#pragma once
+
 __device__ __host__ int sgn(real val) { return (0.0 < val) - (val < 0.0); }
 
 inline void safe_cuda(cudaError_t a) {

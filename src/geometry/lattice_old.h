@@ -1,15 +1,15 @@
 
+#include "Objects.h"
+#include "compare_double.h"
+#include "quadratic.h"
+#include "ran.h"
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <vector>
-#include <algorithm>
-#include <utility>
-#include "compare_double.h"
-#include "quadratic.h"
-#include "Objects.h"
-#include "ran.h"
 #include <sstream>
+#include <utility>
+#include <vector>
 
 #define PI 3.1415926535897932384626433832795
 

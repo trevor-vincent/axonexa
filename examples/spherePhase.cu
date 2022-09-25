@@ -53,7 +53,7 @@ using namespace std;
 #include "pinnedVector.cu"
 #include "pinnedVector.cuh"
 #include "plane.cuh"
-#include "simuparams.cuh"
+#include "simuParams.cuh"
 #include "substrate.cuh"
 #include "timer.cuh"
 #include "vector3.cuh"
@@ -72,7 +72,7 @@ int main() {
 
     phaseAcquisitionStream<CosGFunc> pas(number_of_particles);
 
-    int NOI = 100;
+    int NOI = 1;
     int NOM = 2;
 
     for (int j = 0; j < NOI; j++) {
@@ -101,7 +101,6 @@ int main() {
     lengths[1] = .002;
     lengths[2] = .005;
     lengths[3] = .010;
-
     for (int r = 0; r < 4; r++) {
 
         real D_extra = 2.5E-6;
@@ -110,11 +109,8 @@ int main() {
         real T2_e = 200;
 
         real l = lengths[r];
-        std::cout << " PLANE LENGTH = " << l << std::endl;
-        Plane cyls[2];
-        Lattice lattice(l, l, l, T2_e, 0.0, D_extra, 2);
-        cyls[0] = Plane(Vector3(0.0, 0.0, 0.0), Vector3(1.0, 0.0, 0.0));
-        cyls[1] = Plane(Vector3(l, 0.0, 0.0), Vector3(-1.0, 0.0, 0.0));
+        std::cout << " CYLINDER DIAMETER = " << l << std::endl;
+        Sphere cyls(0.0, 0.0, 0.0, l / 2.0, 0.0, 0.0, D_intra, 0, 0.0);
 
         // Empty nothing[1];
         // Lattice lattice(d, 2.0*d*0.86602540378443864676372317075294, d, T2_e,
@@ -133,9 +129,11 @@ int main() {
         numOfSMPerDevice[0] = 14;
         numOfSMPerDevice[1] = 2;
 
-        for (int i = 0; i < 3; i++) {
-            pas.runAcquisitionStreamLattice(cyls, lattice, timestep, blocks,
-                                            threads, 1, plan, numOfSMPerDevice);
+        int repeats = 3;
+
+        for (int i = 0; i < repeats; i++) {
+            pas.runAcquisitionStream(cyls, timestep, blocks, threads, 1, plan,
+                                     numOfSMPerDevice);
             pas.calcEveryADC();
             pas.changeSeeds(time(NULL) * (i + 1));
         }
@@ -147,6 +145,5 @@ int main() {
                 << " ";
             std::cout << pas.getAcquisition(i).getADC() << std::endl;
         }
-        pas.flushADC();
     }
 }

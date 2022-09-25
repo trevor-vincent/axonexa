@@ -1,3 +1,6 @@
+#pragma once
+#include "pinnedVector.cuh"
+
 // add devstates to kernel stream
 template <class FieldType> class magAcquisitionStream {
 

@@ -1,3 +1,5 @@
+#pragma once
+
 __host__ __device__ bool doub_equal(double a, double b) {
     if (fabs(a - b) < EPSILON) {
         return true;
