@@ -1,4 +1,10 @@
-// get rid of substrate
+#define WARP_SIZE 32
+#define USE_DOUBLE
+#define SPECULAR_REFLECTION
+//#define USE_RELAXATION
+#define GAMMA 267500.0 // ms^-1 * T^-1
+#define PI 3.1415926535897932384626433832795
+//#define USE_RELAXATION
 
 #include <assert.h>
 #include <cmath>
@@ -6,22 +12,12 @@
 #include <curand_kernel.h>
 #include <iomanip>
 #include <iostream>
-#include <thrust/device_ptr.h>
-#include <thrust/device_vector.h>
-#include <thrust/functional.h>
-#include <thrust/host_vector.h>
-#include <thrust/sort.h>
-#include <thrust/transform_reduce.h>
 #include <time.h>
 #include <vector>
 
-#define USE_DOUBLE
-//#define KERNEL_DEBUG
-
-#define WARP_SIZE 32
 #if defined USE_DOUBLE
 typedef double real;
-#define EPSILON 5e-12
+#define EPSILON 1e-14
 
 #else
 typedef float real;
@@ -31,37 +27,36 @@ typedef float real;
 
 using namespace std;
 
-#define SPECULAR_REFLECTION
-#define GAMMA 267500.0 // ms^-1 * T^-1
-#define PI 3.1415926535897932384626433832795
-//#define SPECULAR_REFLECTION
-
+#include "CPUkernels.cuh"
+#include "Sphere.cuh"
 #include "bfunctors.cuh"
+#include "blochdiff.cuh"
+#include "boundaryCheck.cuh"
 #include "compare.cuh"
 #include "cudaVector.cu"
 #include "cudaVector.cuh"
-#include "misc.cuh"
-#include "pinnedVector.cu"
-#include "pinnedVector.cuh"
-#include "timer.cuh"
-#include "vector3.cuh"
-
-//#include "intersect.cuh"
-
-#include "CPUkernels.cuh"
-#include "blochdiff.cuh"
 #include "cylinderXY.cuh"
+#include "empty.cuh"
 #include "gfunctors.cuh"
 #include "kernelDEBUG.cuh"
+#include "kernelLattice.cuh"
 #include "kernelMag.cuh"
 #include "kernelPhase.cuh"
+#include "kernelSetup.cuh"
 #include "kernelWC.cuh"
+#include "lattice.cuh"
 #include "magAcquisition.cuh"
 #include "magAcquisitionStream.cuh"
+#include "misc.cuh"
 #include "phaseAcquisition.cuh"
 #include "phaseAcquisitionStream.cuh"
-#include "simuparams.cuh"
+#include "pinnedVector.cu"
+#include "pinnedVector.cuh"
+#include "plane.cuh"
+#include "simuParams.cuh"
 #include "substrate.cuh"
+#include "timer.cuh"
+#include "vector3.cuh"
 
 int main() {
 

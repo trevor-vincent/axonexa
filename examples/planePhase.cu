@@ -53,7 +53,7 @@ using namespace std;
 #include "pinnedVector.cu"
 #include "pinnedVector.cuh"
 #include "plane.cuh"
-#include "simuparams.cuh"
+#include "simuParams.cuh"
 #include "substrate.cuh"
 #include "timer.cuh"
 #include "vector3.cuh"
@@ -64,7 +64,7 @@ int main() {
     cudaFuncSetCacheConfig("setup_kernel", cudaFuncCachePreferL1);
     cudaFuncSetCacheConfig("_functionReduceAtom", cudaFuncCachePreferShared);
 
-    int number_of_particles = 114688; // needs to be a factor of two
+    int number_of_particles = std::pow(2,12); // needs to be a factor of two
     real timestep = .001;
 
     int threads = 128;
@@ -72,7 +72,7 @@ int main() {
 
     phaseAcquisitionStream<CosGFunc> pas(number_of_particles);
 
-    int NOI = 100;
+    int NOI = 10;
     int NOM = 2;
 
     for (int j = 0; j < NOI; j++) {
@@ -130,7 +130,7 @@ int main() {
         plan[1] = NOI;
         plan[2] = NOI;
         std::vector<int> numOfSMPerDevice(1);
-        numOfSMPerDevice[0] = 14;
+        numOfSMPerDevice[0] = 1;
         numOfSMPerDevice[1] = 2;
 
         for (int i = 0; i < 3; i++) {
