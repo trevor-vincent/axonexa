@@ -53,7 +53,7 @@ using namespace std;
 #include "pinnedVector.cu"
 #include "pinnedVector.cuh"
 #include "plane.cuh"
-#include "simuparams.cuh"
+#include "simuParams.cuh"
 #include "substrate.cuh"
 #include "timer.cuh"
 #include "vector3.cuh"
@@ -64,7 +64,7 @@ int main() {
     cudaFuncSetCacheConfig("setup_kernel", cudaFuncCachePreferL1);
     cudaFuncSetCacheConfig("_functionReduceAtom", cudaFuncCachePreferShared);
 
-    int number_of_particles = 114688; // needs to be a factor of two
+    int number_of_particles = 114688/8; // needs to be a factor of two
     real timestep = .001;
 
     int threads = 128;
@@ -72,7 +72,7 @@ int main() {
 
     phaseAcquisitionStream<CosGFunc> pas(number_of_particles);
 
-    int NOI = 100;
+    int NOI = 3;
     int NOM = 2;
 
     for (int j = 0; j < NOI; j++) {
@@ -129,34 +129,25 @@ int main() {
         // Lattice lattice(d, 2.0*d*0.86602540378443864676372317075294, d, T2_e,
         // 0.0, D_extra); nothing[0] = Empty();
 
-        // for (int i = 0; i < NOI; i++){
-        // pas.runAcquisitionLattice(i,cyls, lattice, timestep, blocks, threads,
-        // 14);
-        // }
+        for (int i = 0; i < NOI; i++){
+         pas.runAcquisitionLattice(i,cyls, lattice, timestep, blocks, threads,1);
+         }
 
-        std::vector<int> plan(3);
-        plan[0] = 0;
-        plan[1] = NOI;
-        plan[2] = NOI;
-        std::vector<int> numOfSMPerDevice(1);
-        numOfSMPerDevice[0] = 14;
-        numOfSMPerDevice[1] = 2;
+//        int repeats = 3;
 
-        int repeats = 3;
+//        for (int i = 0; i < repeats; i++) {
+//            pas.runAcquisitionStreamLattice(cyls, lattice, timestep, blocks,
+//                                            threads, 1, plan, numOfSMPerDevice);
+//            pas.calcEveryADC();
+//            pas.changeSeeds(time(NULL) * (i + 1));
+//        }
 
-        for (int i = 0; i < repeats; i++) {
-            pas.runAcquisitionStreamLattice(cyls, lattice, timestep, blocks,
-                                            threads, 1, plan, numOfSMPerDevice);
-            pas.calcEveryADC();
-            pas.changeSeeds(time(NULL) * (i + 1));
-        }
-
-        for (int i = 0; i < NOI; i++) {
-            std::cout << setprecision(20);
-            std::cout
-                << pas.getAcquisition(i).getGradientFunctors()[0].getFreq()
-                << " ";
-            std::cout << pas.getAcquisition(i).getADC() << std::endl;
-        }
+//        for (int i = 0; i < NOI; i++) {
+//            std::cout << setprecision(20);
+//            std::cout
+//                << pas.getAcquisition(i).getGradientFunctors()[0].getFreq()
+//                << " ";
+//            std::cout << pas.getAcquisition(i).getADC() << std::endl;
+//        }
     }
 }

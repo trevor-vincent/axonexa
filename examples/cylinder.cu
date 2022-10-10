@@ -53,7 +53,7 @@ using namespace std;
 #include "pinnedVector.cu"
 #include "pinnedVector.cuh"
 #include "plane.cuh"
-#include "simuparams.cuh"
+#include "simuParams.cuh"
 #include "substrate.cuh"
 #include "timer.cuh"
 #include "vector3.cuh"
@@ -101,33 +101,36 @@ int main() {
     lengths[1] = .002;
     lengths[2] = .005;
     lengths[3] = .010;
-    for (int r = o; r < 4; r++) {
+
+for (int r = 0; r < 4; r++) {
 
         real D_extra = 2.5E-6;
         real D_intra = 1.0E-6;
         real T2_i = 200;
         real T2_e = 200;
 
+	real f = .5;
         real l = lengths[r];
-        std::cout << " CYLINDER DIAMETER = " << l << std::endl;
-        Cylinder_XY cyls(0.0, 0.0, l / 2.0, 0.0, 0.0, D, 0, 0.0);
-
+	real d = sqrt((PI)/(4.*f))*l;
+std::cout << " CYLINDER DIAMETER = " << l << std::endl;
+        Cylinder_XY cyls(0.0, 0.0, l / 2.0, 0.0, 0.0, D_intra, 0, 0.0);
+	
         // Empty nothing[1];
-        // Lattice lattice(d, 2.0*d*0.86602540378443864676372317075294, d, T2_e,
-        // 0.0, D_extra); nothing[0] = Empty();
+        Lattice lattice(d, d, d, T2_e, 0.0, D_extra, 1);
+	// nothing[0] = Empty();
 
         // for (int i = 0; i < NOI; i++){
         // pas.runAcquisitionLattice(i,cyls, lattice, timestep, blocks, threads,
         // 14);
         // }
 
-        std::vector<int> plan(3);
-        plan[0] = 0;
-        plan[1] = NOI;
-        plan[2] = NOI;
+        std::vector<int> plan(1);
+        plan[0] = NOI;
+//        plan[1] = NOI;
+//       plan[2] = NOI;
         std::vector<int> numOfSMPerDevice(1);
-        numOfSMPerDevice[0] = 14;
-        numOfSMPerDevice[1] = 2;
+        numOfSMPerDevice[0] = 1;
+//        numOfSMPerDevice[1] = 2;
 
         int repeats = 3;
 
@@ -138,6 +141,7 @@ int main() {
             pas.changeSeeds(time(NULL) * (i + 1));
         }
 
+
         for (int i = 0; i < NOI; i++) {
             std::cout << setprecision(20);
             std::cout
@@ -145,5 +149,7 @@ int main() {
                 << " ";
             std::cout << pas.getAcquisition(i).getADC() << std::endl;
         }
+        pas.flushADC();
+
     }
 }

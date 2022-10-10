@@ -131,7 +131,7 @@ int main() {
         plan[2] = NOI;
         std::vector<int> numOfSMPerDevice(1);
         numOfSMPerDevice[0] = 1;
-        numOfSMPerDevice[1] = 2;
+//        numOfSMPerDevice[1] = 2;
 
         for (int i = 0; i < 3; i++) {
             pas.runAcquisitionStreamLattice(cyls, lattice, timestep, blocks,
